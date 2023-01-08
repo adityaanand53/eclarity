@@ -483,18 +483,20 @@ const toolbarButtons = [
     props: {
       isRadio: true, // ?
       groupId: 'MoreTools',
-      primary: _createActionButton(
-        'Reset',
-        'tool-reset',
-        'Reset View',
+      primary:   _createToolButton(
+        'Angle',
+        'tool-angle',
+        'Angle',
         [
           {
-            commandName: 'resetViewport',
-            commandOptions: {},
+            commandName: 'setToolActive',
+            commandOptions: {
+              toolName: 'Angle',
+            },
             context: 'CORNERSTONE',
           },
         ],
-        'Reset'
+        'Angle'
       ),
       secondary: {
         icon: 'chevron-down',
