@@ -500,122 +500,110 @@ const toolbarButtons = [
         icon: 'chevron-down',
         label: '',
         isActive: true,
-        tooltip: 'More Tools',
+        tooltip: 'Measurements',
       },
       items: [
-        _createActionButton(
-          'Reset',
-          'tool-reset',
-          'Reset View',
-          [
-            {
-              commandName: 'resetViewport',
-              commandOptions: {},
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Reset'
-        ),
-        _createActionButton(
-          'rotate-right',
-          'tool-rotate-right',
-          'Rotate Right',
-          [
-            {
-              commandName: 'rotateViewportCW',
-              commandOptions: {},
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Rotate +90'
-        ),
-        _createActionButton(
-          'flip-horizontal',
-          'tool-flip-horizontal',
-          'Flip Horizontally',
-          [
-            {
-              commandName: 'flipViewportHorizontal',
-              commandOptions: {},
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Flip Horizontal'
-        ),
-        _createToggleButton('StackImageSync', 'link', 'Stack Image Sync', [
-          {
-            commandName: 'toggleStackImageSync',
-            commandOptions: {},
-            context: 'CORNERSTONE',
-          },
-        ]),
-        _createToggleButton(
-          'ReferenceLines',
-          'tool-referenceLines', // change this with the new icon
-          'Reference Lines',
-          [
-            {
-              commandName: 'toggleReferenceLines',
-              commandOptions: {},
-              context: 'CORNERSTONE',
-            },
-          ]
-        ),
-        _createToolButton(
-          'StackScroll',
-          'tool-stack-scroll',
-          'Stack Scroll',
-          [
-            {
-              commandName: 'setToolActive',
-              commandOptions: {
-                toolName: 'StackScroll',
-              },
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Stack Scroll'
-        ),
-        _createActionButton(
-          'invert',
-          'tool-invert',
-          'Invert',
-          [
-            {
-              commandName: 'invertViewport',
-              commandOptions: {},
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Invert Colors'
-        ),
-        _createToolButton(
-          'Probe',
-          'tool-probe',
-          'Probe',
-          [
-            {
-              commandName: 'setToolActive',
-              commandOptions: {
-                toolName: 'DragProbe',
-              },
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Probe'
-        ),
-        _createToggleButton(
-          'cine',
-          'tool-cine',
-          'Cine',
-          [
-            {
-              commandName: 'toggleCine',
-              context: 'CORNERSTONE',
-            },
-          ],
-          'Cine'
-        ),
+        // _createActionButton(
+        //   'Reset',
+        //   'tool-reset',
+        //   'Reset View',
+        //   [
+        //     {
+        //       commandName: 'resetViewport',
+        //       commandOptions: {},
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Reset'
+        // ),
+        // _createActionButton(
+        //   'rotate-right',
+        //   'tool-rotate-right',
+        //   'Rotate Right',
+        //   [
+        //     {
+        //       commandName: 'rotateViewportCW',
+        //       commandOptions: {},
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Rotate +90'
+        // ),
+        // _createActionButton(
+        //   'flip-horizontal',
+        //   'tool-flip-horizontal',
+        //   'Flip Horizontally',
+        //   [
+        //     {
+        //       commandName: 'flipViewportHorizontal',
+        //       commandOptions: {},
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Flip Horizontal'
+        // ),
+        // _createToggleButton('StackImageSync', 'link', 'Stack Image Sync', [
+        //   {
+        //     commandName: 'toggleStackImageSync',
+        //     commandOptions: {},
+        //     context: 'CORNERSTONE',
+        //   },
+        // ]),
+        // _createToggleButton(
+        //   'ReferenceLines',
+        //   'tool-referenceLines', // change this with the new icon
+        //   'Reference Lines',
+        //   [
+        //     {
+        //       commandName: 'toggleReferenceLines',
+        //       commandOptions: {},
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ]
+        // ),
+        // _createToolButton(
+        //   'StackScroll',
+        //   'tool-stack-scroll',
+        //   'Stack Scroll',
+        //   [
+        //     {
+        //       commandName: 'setToolActive',
+        //       commandOptions: {
+        //         toolName: 'StackScroll',
+        //       },
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Stack Scroll'
+        // ),
+        // _createActionButton(
+        //   'invert',
+        //   'tool-invert',
+        //   'Invert',
+        //   [
+        //     {
+        //       commandName: 'invertViewport',
+        //       commandOptions: {},
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Invert Colors'
+        // ),
+        // _createToolButton(
+        //   'Probe',
+        //   'tool-probe',
+        //   'Probe',
+        //   [
+        //     {
+        //       commandName: 'setToolActive',
+        //       commandOptions: {
+        //         toolName: 'DragProbe',
+        //       },
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Probe'
+        // ),
         _createToolButton(
           'Angle',
           'tool-angle',
@@ -631,21 +619,96 @@ const toolbarButtons = [
           ],
           'Angle'
         ),
+        _createToggleButton(
+          'cine',
+          'tool-cine',
+          'Cine',
+          [
+            {
+              commandName: 'toggleCine',
+              context: 'CORNERSTONE',
+            },
+          ],
+          'Cine'
+        ),
+        // _createToolButton(
+        //   'CobbAngleTool',
+        //   'tool-CobbAngle',
+        //   'Cobb Angle',
+        //   [
+        //     {
+        //       commandName: 'setToolActive',
+        //       commandOptions: {
+        //         toolName: 'CobbAngle',
+        //       },
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Cobb Angle'
+        // ),
         _createToolButton(
-          'Magnify',
-          'tool-magnify',
-          'Magnify',
+          'EllipticalROI',
+          'tool-elipse',
+          'Ellipse',
           [
             {
               commandName: 'setToolActive',
               commandOptions: {
-                toolName: 'Magnify',
+                toolName: 'EllipticalROI',
+              },
+              context: 'CORNERSTONE',
+            },
+            {
+              commandName: 'setToolActive',
+              commandOptions: {
+                toolName: 'SREllipticalROI',
+                toolGroupId: 'SRToolGroup',
               },
               context: 'CORNERSTONE',
             },
           ],
-          'Magnify'
+          'Ellipse'
         ),
+        _createToolButton(
+          'Length',
+          'tool-length',
+          'Length',
+          [
+            {
+              commandName: 'setToolActive',
+              commandOptions: {
+                toolName: 'Length',
+              },
+              context: 'CORNERSTONE',
+            },
+            {
+              commandName: 'setToolActive',
+              commandOptions: {
+                toolName: 'SRLength',
+                toolGroupId: 'SRToolGroup',
+              },
+              // we can use the setToolActive command for this from Cornerstone commandsModule
+              context: 'CORNERSTONE',
+            },
+          ],
+          'Length'
+        ),
+
+        // _createToolButton(
+        //   'Magnify',
+        //   'tool-magnify',
+        //   'Magnify',
+        //   [
+        //     {
+        //       commandName: 'setToolActive',
+        //       commandOptions: {
+        //         toolName: 'Magnify',
+        //       },
+        //       context: 'CORNERSTONE',
+        //     },
+        //   ],
+        //   'Magnify'
+        // ),
         _createToolButton(
           'Rectangle',
           'tool-rectangle',
@@ -661,19 +724,19 @@ const toolbarButtons = [
           ],
           'Rectangle'
         ),
-        _createActionButton(
-          'TagBrowser',
-          'list-bullets',
-          'Dicom Tag Browser',
-          [
-            {
-              commandName: 'openDICOMTagViewer',
-              commandOptions: {},
-              context: 'DEFAULT',
-            },
-          ],
-          'Dicom Tag Browser'
-        ),
+        // _createActionButton(
+        //   'TagBrowser',
+        //   'list-bullets',
+        //   'Dicom Tag Browser',
+        //   [
+        //     {
+        //       commandName: 'openDICOMTagViewer',
+        //       commandOptions: {},
+        //       context: 'DEFAULT',
+        //     },
+        //   ],
+        //   'Dicom Tag Browser'
+        // ),
       ],
     },
   },

@@ -6,7 +6,44 @@ import getGridWidthClass from '../../utils/getGridWidthClass';
 
 const StudyListTableRow = props => {
   const { tableData } = props;
-  const { row, expandedContent, onClickRow, isExpanded } = tableData;
+  const { row, expandedContent, rowLink, isExpanded } = tableData;
+  const TableRow = row.map((cell, index) => {
+    const { content, title, gridCol } = cell;
+    const Cell = (
+      <div className="flex">
+        {index === 0 && (
+          <div>
+            <Icon name={'chevron-right'} className="mr-4 inline-flex" />
+          </div>
+        )}
+        <div
+          className={classnames(
+            { 'overflow-hidden': true },
+            { truncate: true }
+          )}
+        >
+          {content}
+        </div>
+      </div>
+    );
+    return (
+      <td
+        key={index}
+        className={classnames(
+          'px-4 py-2 text-base truncate',
+          { 'border-b border-secondary-light': !isExpanded },
+          getGridWidthClass(gridCol) || ''
+        )}
+        style={{
+          maxWidth: 0,
+        }}
+        title={title}
+      >
+        {rowLink(Cell)}
+      </td>
+    );
+  });
+
   return (
     <>
       <tr className="select-none">
@@ -36,46 +73,8 @@ const StudyListTableRow = props => {
                     },
                     { 'bg-secondary-dark': isExpanded }
                   )}
-                  onClick={onClickRow}
                 >
-                  {row.map((cell, index) => {
-                    const { content, title, gridCol } = cell;
-                    return (
-                      <td
-                        key={index}
-                        className={classnames(
-                          'px-4 py-2 text-base truncate',
-                          { 'border-b border-secondary-light': !isExpanded },
-                          getGridWidthClass(gridCol) || ''
-                        )}
-                        style={{
-                          maxWidth: 0,
-                        }}
-                        title={title}
-                      >
-                        <div className="flex">
-                          {index === 0 && (
-                            <div>
-                              <Icon
-                                name={
-                                  isExpanded ? 'chevron-down' : 'chevron-right'
-                                }
-                                className="mr-4 inline-flex"
-                              />
-                            </div>
-                          )}
-                          <div
-                            className={classnames(
-                              { 'overflow-hidden': true },
-                              { truncate: true }
-                            )}
-                          >
-                            {content}
-                          </div>
-                        </div>
-                      </td>
-                    );
-                  })}
+                  {TableRow}
                 </tr>
                 {isExpanded && (
                   <tr className="w-full bg-black select-text max-h-0 overflow-hidden">
@@ -105,7 +104,7 @@ StudyListTableRow.propTypes = {
       })
     ).isRequired,
     expandedContent: PropTypes.node.isRequired,
-    onClickRow: PropTypes.func.isRequired,
+    rowLink: PropTypes.func.isRequired,
     isExpanded: PropTypes.bool.isRequired,
   }),
 };

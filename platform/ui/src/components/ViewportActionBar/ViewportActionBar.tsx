@@ -37,7 +37,6 @@ const ViewportActionBar = ({
     scanner,
   } = patientInformation;
 
-  const onPatientInfoClick = () => setShowPatientInfo(!showPatientInfo);
   const closePatientInfo = () => setShowPatientInfo(false);
   const showPatientInfoRef = useRef(null);
   const clickOutsideListener = useOnClickOutside(
@@ -98,6 +97,31 @@ const ViewportActionBar = ({
           </div>
         </div>
       </div>
+      <div className="flex flex-col justify-start ml-4">
+        <p className="text-base max-w-50 text-primary-light">{patientName}</p>
+      </div>
+      <div className="flex flex-col justify-start ml-4">
+        <p className="text-base max-w-40 text-primary-light">
+          Sex: {patientSex}
+        </p>
+        <p className="text-base max-w-40 text-primary-light">
+          Age: {patientAge}
+        </p>
+      </div>
+      <div className="flex flex-col justify-start ml-4">
+        <p className="text-base max-w-40 text-primary-light">MRN: {MRN}</p>
+        <p className="text-base max-w-40 text-primary-light">
+          Tickness: {thickness}
+        </p>
+      </div>
+      <div className="flex flex-col justify-start ml-4">
+        <p className="text-base max-w-40 text-primary-light">
+          Spacing: {spacing}
+        </p>
+        <p className="text-base max-w-60 text-primary-light">
+          Scanner: {scanner}
+        </p>
+      </div>
       {/* {showNavArrows && !showCine && (
         <div className="mt-2" style={{ pointerEvents: 'all' }}>
           <ButtonGroup>
@@ -125,19 +149,6 @@ const ViewportActionBar = ({
           <CinePlayer {...cineProps} />
         </div>
       )} */}
-      <div className="flex h-8 mt-2 ml-4 mr-2" onClick={onPatientInfoClick}>
-        <PatientInfo
-          showPatientInfoRef={showPatientInfoRef}
-          isOpen={showPatientInfo}
-          patientName={patientName}
-          patientSex={patientSex}
-          patientAge={patientAge}
-          MRN={MRN}
-          thickness={thickness}
-          spacing={spacing}
-          scanner={scanner}
-        />
-      </div>
     </div>
   );
 };

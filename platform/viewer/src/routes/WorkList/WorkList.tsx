@@ -14,8 +14,8 @@ import { utils, hotkeys } from '@ohif/core';
 
 import {
   Icon,
-  StudyListExpandedRow,
-  Button,
+  // StudyListExpandedRow,
+  // Button,
   EmptyStudies,
   StudyListTable,
   StudyListPagination,
@@ -311,67 +311,78 @@ function WorkList({
           gridCol: 4,
         },
       ],
-      // Todo: This is actually running for all rows, even if they are
-      // not clicked on.
-      expandedContent: (
-        <StudyListExpandedRow
-          seriesTableColumns={{
-            description: 'Description',
-            seriesNumber: 'Series',
-            modality: 'Modality',
-            instances: 'Instances',
-          }}
-          seriesTableDataSource={
-            seriesInStudiesMap.has(studyInstanceUid)
-              ? seriesInStudiesMap.get(studyInstanceUid).map(s => {
-                return {
-                  description: s.description || '(empty)',
-                  seriesNumber: s.seriesNumber ?? '',
-                  modality: s.modality || '',
-                  instances: s.numSeriesInstances || '',
-                };
-              })
-              : []
+      // expandedContent: (
+      //   <StudyListExpandedRow
+      //     seriesTableColumns={{
+      //       description: 'Description',
+      //       seriesNumber: 'Series',
+      //       modality: 'Modality',
+      //       instances: 'Instances',
+      //     }}
+      //     seriesTableDataSource={
+      //       seriesInStudiesMap.has(studyInstanceUid)
+      //         ? seriesInStudiesMap.get(studyInstanceUid).map(s => {
+      //             return {
+      //               description: s.description || '(empty)',
+      //               seriesNumber: s.seriesNumber ?? '',
+      //               modality: s.modality || '',
+      //               instances: s.numSeriesInstances || '',
+      //             };
+      //           })
+      //         : []
+      //     }
+      //   >
+      //     {appConfig.modes.map((mode, i) => {
+      //       const isFirst = i === 0;
+      //       if (i > 0) {
+      //         return;
+      //       }
+      //       const isValidMode = mode.isValidMode({ modalities });
+      //       // TODO: Modes need a default/target route? We mostly support a single one for now.
+      //       // We should also be using the route path, but currently are not
+      //       // mode.routeName
+      //       // mode.routes[x].path
+      //       // Don't specify default data source, and it should just be picked up... (this may not currently be the case)
+      //       // How do we know which params to pass? Today, it's just StudyInstanceUIDs
+      //       return (
+      //         <Link
+      //           key={i}
+      //           to={`${dataPath ? '../../' : ''}${mode.routeName}${dataPath ||
+      //             ''}?StudyInstanceUIDs=${studyInstanceUid}`}
+      //           // to={`${mode.routeName}/dicomweb?StudyInstanceUIDs=${studyInstanceUid}`}
+      //         >
+      //           <Button
+      //             rounded="full"
+      //             variant={isValidMode ? 'contained' : 'disabled'}
+      //             disabled={!isValidMode}
+      //             endIcon={<Icon name="launch-arrow" />} // launch-arrow | launch-info
+      //             className={classnames('font-medium	', { 'ml-2': !isFirst })}
+      //             onClick={() => {}}
+      //           >
+      //             {t(`Modes:${mode.displayName}`)}
+      //           </Button>
+      //         </Link>
+      //       );
+      //     })}
+      //   </StudyListExpandedRow>
+      // ),
+      rowLink: children => {
+        const route = appConfig.modes.map((mode, i) => {
+          if (i > 0) {
+            return;
           }
-        >
-          {appConfig.modes.map((mode, i) => {
-            const isFirst = i === 0;
-            if (i > 0) {
-              return;
-            }
-            const isValidMode = mode.isValidMode({ modalities });
-            // TODO: Modes need a default/target route? We mostly support a single one for now.
-            // We should also be using the route path, but currently are not
-            // mode.routeName
-            // mode.routes[x].path
-            // Don't specify default data source, and it should just be picked up... (this may not currently be the case)
-            // How do we know which params to pass? Today, it's just StudyInstanceUIDs
-            return (
-              <Link
-                key={i}
-                to={`${dataPath ? '../../' : ''}${mode.routeName}${dataPath ||
-                  ''}?StudyInstanceUIDs=${studyInstanceUid}`}
-              // to={`${mode.routeName}/dicomweb?StudyInstanceUIDs=${studyInstanceUid}`}
-              >
-                <Button
-                  rounded="full"
-                  variant={isValidMode ? 'contained' : 'disabled'}
-                  disabled={!isValidMode}
-                  endIcon={<Icon name="launch-arrow" />} // launch-arrow | launch-info
-                  className={classnames('font-medium	', { 'ml-2': !isFirst })}
-                  onClick={() => { }}
-                >
-                  {t(`Modes:${mode.displayName}`)}
-                </Button>
-              </Link>
-            );
-          })}
-        </StudyListExpandedRow>
-      ),
-      onClickRow: () =>
-        setExpandedRows(s =>
-          isExpanded ? s.filter(n => rowKey !== n) : [...s, rowKey]
-        ),
+          return (
+            <Link
+              key={i}
+              to={`${dataPath ? '../../' : ''}${mode.routeName}${dataPath ||
+                ''}?StudyInstanceUIDs=${studyInstanceUid}`}
+            >
+              {children}
+            </Link>
+          );
+        });
+        return route[0];
+      },
       isExpanded,
     };
   });
