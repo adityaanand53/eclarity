@@ -125,6 +125,7 @@ function modeFactory() {
         'MPR',
         'Crosshairs',
         'Reset',
+        'MeasurementTools',
         'MoreTools',
       ]);
     },

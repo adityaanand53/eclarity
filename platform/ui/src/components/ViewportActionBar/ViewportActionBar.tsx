@@ -98,27 +98,27 @@ const ViewportActionBar = ({
         </div>
       </div>
       <div className="flex flex-col justify-start ml-4">
-        <p className="text-base max-w-50 text-primary-light">{patientName}</p>
+        <p className="text-base max-w-50 text-primary-light text-xs">{patientName}</p>
       </div>
       <div className="flex flex-col justify-start ml-4">
-        <p className="text-base max-w-40 text-primary-light">
+        <p className="text-base max-w-40 text-primary-light text-xs">
           Sex: {patientSex}
         </p>
-        <p className="text-base max-w-40 text-primary-light">
+        <p className="text-base max-w-40 text-primary-light text-xs">
           Age: {patientAge}
         </p>
       </div>
       <div className="flex flex-col justify-start ml-4">
-        <p className="text-base max-w-40 text-primary-light">MRN: {MRN}</p>
-        <p className="text-base max-w-40 text-primary-light">
+        <p className="text-base max-w-40 text-primary-light text-xs">MRN: {MRN}</p>
+        <p className="text-base max-w-40 text-primary-light text-xs">
           Tickness: {thickness}
         </p>
       </div>
       <div className="flex flex-col justify-start ml-4">
-        <p className="text-base max-w-40 text-primary-light">
+        <p className="text-base max-w-40 text-primary-light text-xs">
           Spacing: {spacing}
         </p>
-        <p className="text-base max-w-60 text-primary-light">
+        <p className="text-base max-w-60 text-primary-light text-xs">
           Scanner: {scanner}
         </p>
       </div>
