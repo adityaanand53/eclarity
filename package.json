@@ -17,6 +17,7 @@
     "yarn": ">=1.16.0"
   },
   "scripts": {
+    "build": "lerna run build:viewer --stream",
     "dev": "lerna run dev:viewer --stream",
     "start": "yarn run dev"
   },
